@@ -13,8 +13,10 @@ services:
   prometheus:
     image: prom/prometheus:v2.46.0
     container_name: prometheus
+    user: root
     volumes:
       - ./prometheus:/etc/prometheus
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
       - prometheus_data:/prometheus
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
